@@ -6,34 +6,31 @@
  ************************/
 #include <iostream>
 #include <math.h>
-#include <windows.h>
 
 using namespace std;
 
 int main(){
-  SetConsoleOutputCP(CP_UTF8);
-  SetConsoleCP(CP_UTF8);
 
   const double pi = 3.14, g = 9.8;
-  double M, m, k, radianAlpha, A, a1, a2;
+  double wedgeMass, blockMass, frictionCoefficient, radianAlpha, A, a1, a2;
   int alpha;
 
-  cout << "Введите массу клина: ";
-  cin >> M;
-  cout << "Введите массу бруска: ";
-  cin >> m;
-  cout << "Введите коеффициент трения: ";
-  cin >> k;
-  cout << "Введите угол: ";
+  cout << "Input mass of the wedge: ";
+  cin >> wedgeMass;
+  cout << "Input mass of the block: ";
+  cin >> blockMass;
+  cout << "Input coefficient of friction: ";
+  cin >> frictionCoefficient;
+  cout << "Input angle: ";
   cin >> alpha;
 
   radianAlpha = 40 * (pi / 180);
-  A = M + m * (pow(sin(radianAlpha), 2) - k * sin(radianAlpha * 2) / 2);
+  A = wedgeMass + blockMass * (pow(sin(radianAlpha), 2) - frictionCoefficient * sin(radianAlpha * 2) / 2);
 
-  a1 = (g * M / A) * cos(radianAlpha) * (sin(radianAlpha) - k * cos(radianAlpha));
+  a1 = (g * wedgeMass / A) * cos(radianAlpha) * (sin(radianAlpha) - frictionCoefficient * cos(radianAlpha));
   cout << a1 << '\n';
 
-  a2 = (g * M / A) * sin(radianAlpha) * (cos(radianAlpha) + k * sin(radianAlpha));
+  a2 = (g * wedgeMass / A) * sin(radianAlpha) * (cos(radianAlpha) + frictionCoefficient * sin(radianAlpha));
   cout << a2 << '\n';
 
   system ("pause");
