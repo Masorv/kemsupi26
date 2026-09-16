@@ -25,12 +25,12 @@ int main(){
   cin >> alpha;
 
   radianAlpha = 40 * (pi / 180);
-  A = wedgeMass + blockMass * (pow(sin(radianAlpha), 2) - frictionCoefficient * sin(radianAlpha * 2) / 2);
+  A = wedgeMass + blockMass * ( pow( sin(radianAlpha), 2) - frictionCoefficient * sin(radianAlpha * 2) / 2);
 
-  a1 = (g * wedgeMass / A) * cos(radianAlpha) * (sin(radianAlpha) - frictionCoefficient * cos(radianAlpha));
+  a1 = (g * wedgeMass / A) * cos(radianAlpha) * ( sin(radianAlpha) - frictionCoefficient * cos(radianAlpha) );
   cout << a1 << '\n';
 
-  a2 = (g * wedgeMass / A) * sin(radianAlpha) * (cos(radianAlpha) + frictionCoefficient * sin(radianAlpha));
+  a2 = (g * wedgeMass / A) * sin(radianAlpha) * ( cos(radianAlpha) + frictionCoefficient * sin(radianAlpha) );
   cout << a2 << '\n';
 
   system ("pause");
