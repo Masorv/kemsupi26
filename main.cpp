@@ -11,8 +11,7 @@ using namespace std;
 int main() {
  
   const double pi = 3.14, g = 9.8;
-  double wedgeMass, blockMass, frictionCoefficient, radianAlpha, A, a1, a2;
-  int alpha;
+  double wedgeMass, blockMass, frictionCoefficient, radianAlpha, A, a1, a2, alpha;
 
   cout << "Input mass of the wedge: ";
   cin >> wedgeMass;
