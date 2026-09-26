@@ -27,7 +27,6 @@ int main() {
   cout << "Input angle: ";
   cin >> alpha;
 
-
   radianAlpha = alpha * (pi / 180.0);
   A = wedgeMass + blockMass * (pow(sin(radianAlpha), 2.0) - frictionCoefficient * sin(radianAlpha * 2.0) / 2.0);
   //The friction is absent between the wedge and the horizontal plate
@@ -35,8 +34,9 @@ int main() {
   //The friction is absent between the block and the wedge
   a2 = (g * wedgeMass / A) * sin(radianAlpha) * (cos(radianAlpha) + frictionCoefficient * sin(radianAlpha));
 
-  cout << a1 << '\n' << a2 << '\n';
-
+  cout << a1 << '\n'
+       << a2 << '\n';
+  
   system("pause");
   return 0;
 }
