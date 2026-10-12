@@ -44,4 +44,6 @@ int main() {
     cout << C << '\t' 
          << delta << '\n';
   }
+
+  return 0;
 }
