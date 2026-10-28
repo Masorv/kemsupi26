@@ -12,28 +12,14 @@
 
 using namespace std;
 
-void partA();
-void partB();
-void partC();
-void partD();
+//void partA();
+//void partB();
+//void partC();
+//void partD();
 
 int main() {
 	cout << "Part A:\n";
-	partA();
 
-	cout << "\nPart B:\n";
-	partB();
-
-	cout << "\nPart C:\n";
-	partC();
-
-	cout << "\nPart D:\n";
-	partD();
-
-	return 0;
-}
-
-void partA() {
 	string input, word;
 
 	cout << "Input a string: ";
@@ -56,9 +42,9 @@ void partA() {
 			word = "";
 		}
 	}
-}
 
-void partB() {
+	cout << "\nPart B:\n";
+
 	int n, l, r;
 
 	cout << "Input count of vector's elements: ";
@@ -66,7 +52,7 @@ void partB() {
 
 	if (n <= 0) {
 		cout << "Invalid";
-		return;
+		return 1;
 	}
 
 	cout << "Input start of the segment: ";
@@ -77,7 +63,7 @@ void partB() {
 
 	if (l <= 0 || r <= 0 || r < l) {
 		cout << "Invalid";
-		return;
+		return 1;
 	}
 
 	vector <int> numbersVector(n);
@@ -91,9 +77,9 @@ void partB() {
 	for (int numberIndex = l - 1; numberIndex < r; ++numberIndex) {
 		cout << numbersVector[numberIndex] << ' ';
 	}
-}
 
-void partC() {
+	cout << "\nPart C:\n";
+
 	int pairsCount;
 	map <string, int> pairs;
 
@@ -116,12 +102,12 @@ void partC() {
 
 	if (pairs.find(key) != pairs.end()) {
 		cout << pairs.find(key)->second;
-	} else {
+	}
+	else {
 		cout << "Invalid";
 	}
-}
 
-void partD() {
+	cout << "\nPart D:\n";
 	int seatsCount;
 	map <int, vector<int>> grouped;
 
@@ -150,7 +136,9 @@ void partD() {
 	for (auto& seat : grouped) {
 		sort(seat.second.begin(), seat.second.end());
 		for (int& place : seat.second) {
-			printf("%d-%d\n", seat.first, place);
+			cout << seat.first << '-' << place;
 		}
 	}
+
+	return 0;
 }
