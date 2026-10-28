@@ -18,127 +18,127 @@ using namespace std;
 //void partD();
 
 int main() {
-	cout << "Part A:\n";
+  cout << "Part A:\n";
 
-	string input, word;
+  string input, word;
 
-	cout << "Input a string: ";
-	getline(cin, input);
-	input += ' ';
+  cout << "Input a string: ";
+  getline(cin, input);
+  input += ' ';
 
-	for (char& letter : input) {
-		if (letter != ' ') {
-			word += letter;
-		}
-		else {
-			string invertedWord = "";
+  string invertedWord;
 
-			for (int letterIndex = word.size() - 1; letterIndex >= 0; --letterIndex) {
-				invertedWord += word[letterIndex];
-			}
+  for (char& letter : input) {
+    if (letter != ' ') {
+      word += letter;
+    } else {
+      invertedWord = "";
 
-			cout << invertedWord << ' ';
+      for (int letterIndex = word.size() - 1; letterIndex >= 0; --letterIndex) {
+        invertedWord += word[letterIndex];
+      }
 
-			word = "";
-		}
-	}
+      cout << invertedWord << ' ';
 
-	cout << "\nPart B:\n";
+      word = "";
+    }
+  }
 
-	int n, l, r;
+  cout << "\nPart B:\n";
 
-	cout << "Input count of vector's elements: ";
-	cin >> n;
+  int n, l, r;
 
-	if (n <= 0) {
-		cout << "Invalid";
-		return 1;
-	}
+  cout << "Input count of vector's elements: ";
+  cin >> n;
 
-	cout << "Input start of the segment: ";
-	cin >> l;
+  if (n <= 0) {
+    cout << "Invalid";
+    return 1;
+  }
 
-	cout << "Input end of the segment: ";
-	cin >> r;
+  cout << "Input start of the segment: ";
+  cin >> l;
 
-	if (l <= 0 || r <= 0 || r < l) {
-		cout << "Invalid";
-		return 1;
-	}
+  cout << "Input end of the segment: ";
+  cin >> r;
 
-	vector <int> numbersVector(n);
+  if (l <= 0 || r <= 0 || r < l) {
+    cout << "Invalid";
+    return 1;
+  }
 
-	cout << "Input vector: ";
+  vector <int> numbersVector(n);
 
-	for (int numberIndex = 0; numberIndex < n; ++numberIndex) {
-		cin >> numbersVector[numberIndex];
-	}
+  cout << "Input vector: ";
 
-	for (int numberIndex = l - 1; numberIndex < r; ++numberIndex) {
-		cout << numbersVector[numberIndex] << ' ';
-	}
+  for (int numberIndex = 0; numberIndex < n; ++numberIndex) {
+    cin >> numbersVector[numberIndex];
+  }
 
-	cout << "\nPart C:\n";
+  for (int numberIndex = l - 1; numberIndex < r; ++numberIndex) {
+    cout << numbersVector[numberIndex] << ' ';
+  }
 
-	int pairsCount;
-	map <string, int> pairs;
+  cout << "\nPart C:\n";
 
-	cout << "Input number of pairs: ";
-	cin >> pairsCount;
+  int pairsCount;
+  map <string, int> pairs;
 
-	for (int pairsIndex = 0; pairsIndex < pairsCount; ++pairsIndex) {
-		int number;
-		string name;
+  cout << "Input number of pairs: ";
+  cin >> pairsCount;
 
-		cout << "Input pair: "; cin >> name >> number;
+  int number;
+  string name;
 
-		pairs[name] = number;
-	}
+  for (int pairsIndex = 0; pairsIndex < pairsCount; ++pairsIndex) {
+    cout << "Input pair: "; cin >> name >> number;
 
-	string key;
+    pairs[name] = number;
+  }
 
-	cout << "Input key: ";
-	cin >> key;
+  string key;
 
-	if (pairs.find(key) != pairs.end()) {
-		cout << pairs.find(key)->second;
-	}
-	else {
-		cout << "Invalid";
-	}
+  cout << "Input key: ";
+  cin >> key;
 
-	cout << "\nPart D:\n";
-	int seatsCount;
-	map <int, vector<int>> grouped;
+  if (pairs.find(key) != pairs.end()) {
+    cout << pairs.find(key)->second;
+  } else {
+    cout << "Invalid";
+  }
 
-	cout << "Input number of seats: ";
-	cin >> seatsCount;
+  cout << "\nPart D:\n";
+  int seatsCount;
+  map <int, vector<int>> grouped;
 
-	for (int seatIndex = 0; seatIndex < seatsCount; ++seatIndex) {
-		int row, column;
+  cout << "Input number of seats: ";
+  cin >> seatsCount;
 
-		cout << "Input row and seat: "; cin >> row >> column;
+  int row, column;
 
-		bool existanceSeat = false;
+  for (int seatIndex = 0; seatIndex < seatsCount; ++seatIndex) {
+    cout << "Input row and seat: "; cin >> row >> column;
 
-		for (int& existingSeat : grouped[row]) {
-			if (existingSeat == column) {
-				existanceSeat = true;
-				break;
-			}
-		}
+    bool existanceSeat = false;
 
-		if (!existanceSeat) {
-			grouped[row].push_back(column);
-		}
-	}
+    for (int& existingSeat : grouped[row]) {
+      if (existingSeat == column) {
+        existanceSeat = true;
+        break;
+      }
+    }
 
-	for (auto& seat : grouped) {
-		sort(seat.second.begin(), seat.second.end());
-		for (int& place : seat.second) {
-			cout << seat.first << '-' << place;
-		}
-	}
+    if (!existanceSeat) {
+      grouped[row].push_back(column);
+    }
+  }
 
-	return 0;
+  for (auto& seat : grouped) {
+    sort(seat.second.begin(), seat.second.end());
+    for (int& place : seat.second) {
+      cout << seat.first << '-' << place;
+    }
+  }
+
+  return 0;
 }
