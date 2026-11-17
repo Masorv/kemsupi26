@@ -1,59 +1,71 @@
 ﻿/******************************************
  * Автор: Мыльников Александр             *
- * Название: Функции                      *
- * Вариант: 17                            *
+ * Название: Обработка массивов           *
+ * Вариант: 19                            *
  *****************************************/
 
 #include <iostream>
-#include <vector>
 
 using namespace std;
 
-void inputVector(vector <int>& numbersVector, int size);
-int  countBiggerElements(vector <int> numbersVector, int c);
+int main() {
+  const int maxSize = 50;
+  int B[maxSize][maxSize], countArray[maxSize], minValueArray[maxSize];
+  int size;
 
+  cout << "Enter the length and width of the matrix (1-50): ";
+  cin >> size;
 
-void inputVector(vector <int>& numbersVector, int size) {
-  cout << "Input vector: ";
-
-  for (int nummberIndex = 0; nummberIndex < size; ++nummberIndex) {
-    cin >> numbersVector[nummberIndex];
+  if (size < 1 || size > 50) {
+    cout << "Invalid length and width";
+    return 1;
   }
 
-}
-
-int  countBiggerElements(vector <int> numbersVector, int c) {
-  int count = 0;
-
-  for (int& number : numbersVector) {
-    if (number > c) {
-      ++count;
+  cout << "Enter the matrix values:\n";
+  for (int rowIndex = 0; rowIndex < size; ++rowIndex) {
+    for (int columnIndex = 0; columnIndex < size; ++columnIndex) {
+      cin >> B[rowIndex][columnIndex];
     }
   }
 
-  return count;
-}
+  for (int columnIndex = 0; columnIndex < size; ++columnIndex) {
 
-int main() {
-  int n, k, c;
+    int count = 0, minValue = 0;
 
-  cout << "Input c: ";
-  cin >> c;
+    for (int rowIndex = 0; rowIndex < size; ++rowIndex) {
+      if (B[rowIndex][columnIndex] < 0) {
 
-  cout << "Input n: ";
-  cin >> n;
+        ++count;
 
-  cout << "Input k: ";
-  cin >> k;
+        if (B[rowIndex][columnIndex] < minValue) {
+          minValue = B[rowIndex][columnIndex];
+        }
+      }
+    }
+    countArray[columnIndex] = count;
+    minValueArray[columnIndex] = minValue;
+  }
 
-  vector <int> T(n);
-  vector <int> Y(k);
+  cout << '\n';
 
-  inputVector(T, n);
-  inputVector(Y, k);
+  for (int rowIndex = 0; rowIndex < size; ++rowIndex) {
+    for (int columnIndex = 0; columnIndex < size; ++columnIndex) {
+      cout << B[rowIndex][columnIndex] << '\t';
+    }
+    cout << '\n';
+  }
 
-  cout << "Count of elements that are bigger than c in T: " << countBiggerElements(T, c) << '\n'
-       << "Count of elements that are bigger than c in Y: " << countBiggerElements(Y, c);
+  cout << '\n';
+
+  for (int columnIndex = 0; columnIndex < size; ++columnIndex) {
+    cout << countArray[columnIndex] << '\t';
+  }
+
+  cout << '\n';
+
+  for (int columnIndex = 0; columnIndex < size; ++columnIndex) {
+    cout << minValueArray[columnIndex] << '\t';
+  }
 
   return 0;
 }
