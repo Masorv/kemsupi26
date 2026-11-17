@@ -9,23 +9,23 @@
 
 using namespace std;
 
-void inputVector(vector <int>& vec, int size);
-int  countBiggerElements(vector <int> T, int c);
+void inputVector(vector <int>& numbersVector, int size);
+int  countBiggerElements(vector <int> numbersVector, int c);
 
 
-void inputVector(vector <int>& vec, int size) {
+void inputVector(vector <int>& numbersVector, int size) {
   cout << "Input vector: ";
 
   for (int nummberIndex = 0; nummberIndex < size; ++nummberIndex) {
-    cin >> vec[nummberIndex];
+    cin >> numbersVector[nummberIndex];
   }
 
 }
 
-int  countBiggerElements(vector <int> vec, int c) {
+int  countBiggerElements(vector <int> numbersVector, int c) {
   int count = 0;
 
-  for (int& number : vec) {
+  for (int& number : numbersVector) {
     if (number > c) {
       ++count;
     }
